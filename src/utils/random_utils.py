@@ -2,12 +2,16 @@
 
 Omar Vasquez, CSC 5300 Week 7.
 Base seed is 5300, same habit as Week 6.
+Hashes use hashlib instead of the built-in hash(). Python salts hash() on
+strings with a new random value every time it starts, so the same seed gave
+different Bloom filter and MinHash results on each run.
 """
 
 from __future__ import annotations
 
+import hashlib
 import random
-from typing import Iterable, List, Sequence
+from typing import Iterable, List, Sequence, Tuple
 
 
 BASE_SEED = 5300
@@ -35,14 +39,20 @@ def input_shapes(n: int, seed: int) -> dict:
     }
 
 
-def pair_hash(item: str, seed: int) -> int:
+def stable_hash(text: str) -> int:
+    """32-bit hash that is the same on every run and every machine."""
+    digest = hashlib.blake2b(text.encode("utf-8"), digest_size=4).digest()
+    return int.from_bytes(digest, "big")
+
+
+def pair_hash(item: str, seed: int) -> Tuple[int, int]:
     """Two independent 32-bit hashes for double hashing. Not cryptographic."""
     text = f"{seed}:{item}"
-    h1 = hash(text) & 0xFFFFFFFF
-    h2 = hash(text + "#") & 0xFFFFFFFF
+    h1 = stable_hash(text)
+    h2 = stable_hash(text + "#")
     if h2 % 2 == 0:
         h2 += 1
-    return h1, h2 or 1
+    return h1, h2
 
 
 def tokens(text: str) -> List[str]:

@@ -10,6 +10,8 @@ from __future__ import annotations
 
 from typing import Iterable, List, Sequence, Set
 
+from src.utils.random_utils import stable_hash
+
 
 def jaccard(left: Iterable[str], right: Iterable[str]) -> float:
     a = set(left)
@@ -20,7 +22,7 @@ def jaccard(left: Iterable[str], right: Iterable[str]) -> float:
 
 
 def _hash_token(token: str, index: int, seed: int) -> int:
-    return hash((seed, index, token)) & 0xFFFFFFFF
+    return stable_hash(f"{seed}:{index}:{token}")
 
 
 def signature(tokens: Iterable[str], k: int, seed: int = 5300) -> List[int]:

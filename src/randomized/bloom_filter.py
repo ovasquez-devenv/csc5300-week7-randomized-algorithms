@@ -10,6 +10,8 @@ from __future__ import annotations
 import math
 from typing import Iterable, List
 
+from src.utils.random_utils import pair_hash
+
 
 class BloomFilter:
     def __init__(self, m_bits: int, k_hashes: int, seed: int = 5300) -> None:
@@ -22,10 +24,7 @@ class BloomFilter:
         self.count = 0
 
     def _indexes(self, item: str) -> List[int]:
-        h1 = hash((self.seed, item)) & 0xFFFFFFFF
-        h2 = hash((self.seed, item, "b")) & 0xFFFFFFFF
-        if h2 % 2 == 0:
-            h2 += 1
+        h1, h2 = pair_hash(item, self.seed)
         return [((h1 + i * h2) % self.m) for i in range(self.k)]
 
     def add(self, item: str) -> None:
