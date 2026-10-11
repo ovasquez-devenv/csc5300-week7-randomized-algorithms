@@ -1,0 +1,61 @@
+part,n,shape,algorithm,trials,seeds,mean_seconds,std_seconds,mean_comparisons,std_comparisons,status
+quicksort,100,random,randomized,5,5300 5301 5302 5303 5304,0.000063,0.000007,660.4,52.9,ok
+quicksort,100,random,week2,5,5300 5301 5302 5303 5304,0.000041,0.000004,,,ok
+quicksort,100,random,deterministic,5,none (fixed pivot),0.000050,0.000001,652.0,0.0,ok
+quicksort,100,sorted,randomized,5,5300 5301 5302 5303 5304,0.000047,0.000001,544.6,21.2,ok
+quicksort,100,sorted,week2,5,5300 5301 5302 5303 5304,0.000030,0.000001,,,ok
+quicksort,100,sorted,deterministic,5,none (fixed pivot),0.000366,0.000003,4914.0,0.0,ok
+quicksort,100,reverse,randomized,5,5300 5301 5302 5303 5304,0.000058,0.000004,679.2,54.3,ok
+quicksort,100,reverse,week2,5,5300 5301 5302 5303 5304,0.000038,0.000005,,,ok
+quicksort,100,reverse,deterministic,5,none (fixed pivot),0.000297,0.000001,4950.0,0.0,ok
+quicksort,100,duplicates,randomized,5,5300 5301 5302 5303 5304,0.000079,0.000005,840.0,67.7,ok
+quicksort,100,duplicates,week2,5,5300 5301 5302 5303 5304,0.000053,0.000003,,,ok
+quicksort,100,duplicates,deterministic,5,none (fixed pivot),0.000063,0.000001,806.0,0.0,ok
+quicksort,1000,random,randomized,5,5300 5301 5302 5303 5304,0.000830,0.000023,11174.4,490.1,ok
+quicksort,1000,random,week2,5,5300 5301 5302 5303 5304,0.000557,0.000018,,,ok
+quicksort,1000,random,deterministic,5,none (fixed pivot),0.000734,0.000008,10664.0,0.0,ok
+quicksort,1000,sorted,randomized,5,5300 5301 5302 5303 5304,0.000707,0.000060,10466.0,1092.4,ok
+quicksort,1000,sorted,week2,5,5300 5301 5302 5303 5304,0.000464,0.000036,,,ok
+quicksort,1000,sorted,deterministic,5,none (fixed pivot),0.033352,0.001898,499464.0,0.0,ok
+quicksort,1000,reverse,randomized,5,5300 5301 5302 5303 5304,0.000739,0.000019,11106.0,338.4,ok
+quicksort,1000,reverse,week2,5,5300 5301 5302 5303 5304,0.000516,0.000022,,,ok
+quicksort,1000,reverse,deterministic,5,none (fixed pivot),0.026487,0.000322,499500.0,0.0,ok
+quicksort,1000,duplicates,randomized,5,5300 5301 5302 5303 5304,0.005460,0.000024,74394.0,781.4,ok
+quicksort,1000,duplicates,week2,5,5300 5301 5302 5303 5304,0.003610,0.000131,,,ok
+quicksort,1000,duplicates,deterministic,5,none (fixed pivot),0.005063,0.000375,74105.0,0.0,ok
+quicksort,10000,random,randomized,5,5300 5301 5302 5303 5304,0.010225,0.000357,155655.0,6152.0,ok
+quicksort,10000,random,week2,5,5300 5301 5302 5303 5304,0.006834,0.000265,,,ok
+quicksort,10000,random,deterministic,5,none (fixed pivot),0.009700,0.000112,153884.0,0.0,ok
+quicksort,10000,sorted,randomized,5,5300 5301 5302 5303 5304,0.008931,0.000316,147582.6,5149.3,ok
+quicksort,10000,sorted,week2,5,5300 5301 5302 5303 5304,0.005833,0.000187,,,ok
+quicksort,10000,sorted,deterministic,0,none (fixed pivot),,,,,deterministic capped above n=2000 (quadratic)
+quicksort,10000,reverse,randomized,5,5300 5301 5302 5303 5304,0.010111,0.000296,160776.4,5950.9,ok
+quicksort,10000,reverse,week2,5,5300 5301 5302 5303 5304,0.006589,0.000156,,,ok
+quicksort,10000,reverse,deterministic,0,none (fixed pivot),,,,,deterministic capped above n=2000 (quadratic)
+quicksort,10000,duplicates,randomized,5,5300 5301 5302 5303 5304,0.476408,0.009137,7173724.0,5183.8,ok
+quicksort,10000,duplicates,week2,5,5300 5301 5302 5303 5304,0.329180,0.002667,,,ok
+quicksort,10000,duplicates,deterministic,5,none (fixed pivot),0.473993,0.004192,7167651.0,0.0,ok
+quicksort,50000,random,randomized,5,5300 5301 5302 5303 5304,0.059017,0.001204,927815.2,18132.2,ok
+quicksort,50000,random,week2,5,5300 5301 5302 5303 5304,0.039845,0.001056,,,ok
+quicksort,50000,random,deterministic,5,none (fixed pivot),0.057389,0.000346,933599.0,0.0,ok
+quicksort,50000,sorted,randomized,5,5300 5301 5302 5303 5304,0.054457,0.001488,890037.8,19396.4,ok
+quicksort,50000,sorted,week2,5,5300 5301 5302 5303 5304,0.036035,0.001191,,,ok
+quicksort,50000,sorted,deterministic,0,none (fixed pivot),,,,,deterministic capped above n=2000 (quadratic)
+quicksort,50000,reverse,randomized,5,5300 5301 5302 5303 5304,0.058535,0.000839,929549.0,30293.9,ok
+quicksort,50000,reverse,week2,5,5300 5301 5302 5303 5304,0.038642,0.001188,,,ok
+quicksort,50000,reverse,deterministic,0,none (fixed pivot),,,,,deterministic capped above n=2000 (quadratic)
+quicksort,50000,duplicates,randomized,1,5300,13.689851,,178718664.0,,duplicates single run above n=10000 (quadratic)
+quicksort,50000,duplicates,week2,0,,,,,,"duplicates skipped above n=10000 (quadratic), see randomized row"
+quicksort,50000,duplicates,deterministic,0,none (fixed pivot),,,,,"duplicates skipped above n=10000 (quadratic), see randomized row"
+quicksort,100000,random,randomized,5,5300 5301 5302 5303 5304,0.160013,0.009252,2072193.4,82189.1,ok
+quicksort,100000,random,week2,5,5300 5301 5302 5303 5304,0.105543,0.005671,,,ok
+quicksort,100000,random,deterministic,5,none (fixed pivot),0.147076,0.003884,1999392.0,0.0,ok
+quicksort,100000,sorted,randomized,5,5300 5301 5302 5303 5304,0.157738,0.010507,1894042.8,38431.3,ok
+quicksort,100000,sorted,week2,5,5300 5301 5302 5303 5304,0.088390,0.008125,,,ok
+quicksort,100000,sorted,deterministic,0,none (fixed pivot),,,,,deterministic capped above n=2000 (quadratic)
+quicksort,100000,reverse,randomized,5,5300 5301 5302 5303 5304,0.145310,0.004683,2065093.6,19725.6,ok
+quicksort,100000,reverse,week2,5,5300 5301 5302 5303 5304,0.095382,0.002718,,,ok
+quicksort,100000,reverse,deterministic,0,none (fixed pivot),,,,,deterministic capped above n=2000 (quadratic)
+quicksort,100000,duplicates,randomized,1,5300,60.842837,,714487185.0,,duplicates single run above n=10000 (quadratic)
+quicksort,100000,duplicates,week2,0,,,,,,"duplicates skipped above n=10000 (quadratic), see randomized row"
+quicksort,100000,duplicates,deterministic,0,none (fixed pivot),,,,,"duplicates skipped above n=10000 (quadratic), see randomized row"

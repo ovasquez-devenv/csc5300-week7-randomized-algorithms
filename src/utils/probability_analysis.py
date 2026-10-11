@@ -23,6 +23,11 @@ def variance(values: Sequence[float]) -> float:
     return sum((value - mu) ** 2 for value in values) / (len(values) - 1)
 
 
+def std_dev(values: Sequence[float]) -> float:
+    """Sample standard deviation, the square root of the sample variance."""
+    return math.sqrt(variance(values))
+
+
 def summary(values: Sequence[float]) -> Tuple[float, float]:
     """Sample mean and sample variance."""
     return mean(values), variance(values)

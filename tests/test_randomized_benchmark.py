@@ -20,3 +20,15 @@ def test_probability_helpers():
     assert var > 0
     assert 0.0 < bloom_false_positive(3, 10, 100) < 1.0
     assert miller_rabin_error_bound(5) < miller_rabin_error_bound(1)
+
+
+def test_trial_seeds_repeat_the_same_results():
+    from src.randomized.randomized_quicksort import randomized_quicksort_with_comparisons
+    from src.utils.random_utils import trial_seeds
+
+    seeds = trial_seeds(3)
+    assert seeds == trial_seeds(3) == [5300, 5301, 5302]
+    data = seeded_list(200, 5300)
+    first = [randomized_quicksort_with_comparisons(data, seed)[1] for seed in seeds]
+    second = [randomized_quicksort_with_comparisons(data, seed)[1] for seed in seeds]
+    assert first == second

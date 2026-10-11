@@ -1,0 +1,6 @@
+part,k,numbers_tested,carmichael_tested,trials,seeds,mr_mean_accuracy,mr_std_accuracy,fermat_mean_accuracy,fermat_std_accuracy,fermat_mean_carmichael_fooled,mr_error_bound_4_to_minus_k,large_numbers_timed,mr_mean_seconds_per_large_number,mr_std_seconds_per_large_number,trial_division_mean_seconds_per_large_number,trial_division_std_seconds_per_large_number,status
+primality,1,48,35,5,5300 5301 5302 5303 5304,0.9292,0.0316,0.4000,0.0174,0.8229,2.500e-01,9,8.900e-06,5.725e-07,1.396e-05,2.106e-06,truth from trial division for every number
+primality,2,48,35,5,5300 5301 5302 5303 5304,0.9958,0.0093,0.5167,0.0228,0.6629,6.250e-02,9,8.500e-06,1.220e-06,1.396e-05,2.106e-06,truth from trial division for every number
+primality,5,48,35,5,5300 5301 5302 5303 5304,1.0000,0.0000,0.6625,0.0757,0.4629,9.766e-04,9,1.026e-05,1.374e-06,1.396e-05,2.106e-06,truth from trial division for every number
+primality,10,48,35,5,5300 5301 5302 5303 5304,1.0000,0.0000,0.8458,0.0543,0.2114,9.537e-07,9,1.352e-05,9.229e-07,1.396e-05,2.106e-06,truth from trial division for every number
+primality,20,48,35,5,5300 5301 5302 5303 5304,1.0000,0.0000,0.9125,0.0272,0.1200,9.095e-13,9,1.820e-05,2.612e-06,1.396e-05,2.106e-06,truth from trial division for every number

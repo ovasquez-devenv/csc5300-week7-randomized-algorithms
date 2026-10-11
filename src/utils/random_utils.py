@@ -22,6 +22,11 @@ def make_rng(seed: int = BASE_SEED) -> random.Random:
     return random.Random(seed)
 
 
+def trial_seeds(trials: int, base: int = BASE_SEED) -> List[int]:
+    """One seed per benchmark trial: base, base + 1, base + 2, and so on."""
+    return [base + trial for trial in range(trials)]
+
+
 def seeded_list(n: int, seed: int, low: int = 0, high: int = 10**6) -> List[int]:
     """Build a list of n integers from a seeded generator."""
     rng = make_rng(seed)
