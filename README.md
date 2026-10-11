@@ -29,7 +29,12 @@ python examples\week7_demo.py
 python -m pytest -v
 python benchmarks\week7_randomized_benchmark.py
 python benchmarks\week7_randomized_benchmark.py --quick
+python benchmarks\week7_randomized_benchmark.py --trials 10
 ```
+
+The full benchmark takes about 1.5 minutes on my laptop (91 seconds on my last run). Most of that is two single runs of the duplicates input. `--quick` uses n = 100 and 1000 with 3 trials and finishes in a few seconds. `--trials` sets how many seeded trials each configuration gets (default 5).
+
+The test suite has 22 tests and all of them pass.
 
 Each part can also be tested by itself:
 
@@ -55,9 +60,23 @@ python -m pytest tests\test_randomized_benchmark.py -v
 
 `src\utils` has `random_utils.py` (base seed 5300), `probability_analysis.py` (mean, variance, Bloom formula, Miller-Rabin bound), and `visualization.py`.
 
-`benchmarks\week7_randomized_benchmark.py` writes the five plots and `summary_table.csv` into `benchmarks\results`. On sorted or reverse input the fixed-pivot sort is capped at n = 2000, and those rows say "deterministic capped above n=2000" instead of a time.
+`benchmarks\week7_randomized_benchmark.py` runs every configuration 5 times and reports the mean and sample standard deviation. It writes these files into `benchmarks\results`:
+
+- `quicksort_results.csv`: time and comparison count for the randomized sort, the Week 2 copy, and the fixed-pivot sort, for each n and input shape (random, sorted, reverse, duplicates).
+- `selection_results.csv`: QuickSelect and sort-then-index for the min, median, and max, with time and recursion depth.
+- `primality_results.csv`: Miller-Rabin and Fermat accuracy for k = 1, 2, 5, 10, 20, the share of Carmichael numbers that fool Fermat, the 4^-k error bound, and Miller-Rabin vs trial division time for numbers above 10^6. Trial division is the ground truth for every number.
+- `bloom_results.csv`: measured and theoretical false positive rate and load factor for 20 to 120 items.
+- `minhash_results.csv`: mean estimate and absolute error for signature sizes 16 to 512, with the theory standard deviation.
+- `summary_table.csv`: one row per metric with trials, mean, standard deviation, and variance.
+- Five plots with one standard deviation error bars: `quicksort_comparison.png`, `selection_runtime.png`, `primality_accuracy.png`, `bloom_filter_fp_rate.png`, and `minhash_similarity_plot.png`.
+
+Rows that hit a limit say so in the status column instead of showing a time.
 
 `tests\` has the six pytest files named in the assignment. `examples\week7_demo.py` is a short smoke run.
+
+## Seeds and reproducibility
+
+Trial t uses seed 5300 + t, so a normal run uses seeds 5300 to 5304, and each CSV lists the seeds it used. The input list for each n is built once from seed 5300 + n, so every trial uses the same data and only the algorithm's own random choices change. The Bloom filter and MinHash hash with hashlib (blake2b) instead of the built-in hash(), because Python salts hash() differently every time it starts. With hashlib the same seed gives the same result on every run and every machine.
 
 ## Book sections
 
@@ -66,6 +85,8 @@ Blackboard lists Amakobe Chapter 6 sections 6.1 to 6.8. In my copy, randomized Q
 ## Limits
 
 The deterministic sorted and reverse cases are capped at n = 2000 because the fixed pivot goes quadratic there.
+
+The duplicates input (values mod 7) is quadratic for every version, because Lomuto partition puts all keys equal to the pivot on one side. Above n = 10000 it runs once, randomized sort only, and the Week 2 and fixed-pivot rows are skipped. The n = 100000 run takes about a minute by itself. A three-way partition would fix this, but I kept the algorithms as they are and discuss it in the report.
 
 ## AI disclosure
 
